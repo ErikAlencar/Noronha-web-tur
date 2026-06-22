@@ -210,7 +210,7 @@ header nav ul a:hover::after {
 .container .carrosel .list-item .card-texto .titulo {
     font-size: 3em;
     font-weight: 700;
-    color: var(--cor-detalhes);
+    color: var(--cor-detalhes-escuro);
     line-height: 1.2em;
     margin-bottom: 0.5rem;
 }
