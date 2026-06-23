@@ -24,26 +24,31 @@
             </div>
 
             <nav>
-                <ul>
-                    <div class="lista-menu">
-                        <button id="btnNoronha" class="btn-menu">
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul id="menu-nav" class="nav-menu">
+                    <li class="menu-item">
+                        <button class="menu-btn" id="btnNoronha">
                             Noronha ▼
                         </button>
-
-                        <div id="menuNoronha" class="lista">
+                        <div id="menuNoronha" class="submenu">
                             <a href="#">PRAIAS</a>
-                            <a href="#">MAPA DA ILHA</a>
+                            <a href="mapa.html">MAPA DA ILHA</a>
                             <a href="#">HOTÉIS</a>
                             <a href="#">DICA</a>
                         </div>
-                    </div>
+                    </li>
 
                     <li><a href="pacotes.html">Pacotes</a></li>
                     <li><a href="destinos.html">Restaurantes</a></li>
                     <li><a href="passeios.html">Passeios</a></li>
-                    <li><a href="reservas.html">Reservas</a></li>
+                    <li><a href="reserva.html">Reservas</a></li>
                     <li><a href="contato.html">Pousadas</a></li>
-                    <li><a href="contato.html">Como chegar</a></li>
+                    <li><a href="comochegar.html">Como chegar</a></li>
                 </ul>
             </nav>
         </div>
@@ -56,11 +61,13 @@
                 <img src="img/imagem-1.webp" alt="">
 
                 <div class="card-texto">
-                    <h2 class="titulo">Praia de noronha</h2>
-                    <p class="descricao">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, adipisci.
+                    <h2 class="titulo">Praias de Sonho</h2>
+                    <p class="descricao">Desvende o paraíso nas praias mais virgens do Atlântico. Com águas turquesas,
+                        areias douradas intocadas e cenários que parecem saídos de um sonho, Fernando de Noronha oferece
+                        praias únicas e protegidas, onde a natureza está em sua forma mais pura e deslumbrante.
                     </p>
                     <div class="buttons">
-                        <button class="btn">Saiba mais</button>
+                        <a href="#secao-atracoes" class="btn">Explorar Atrações</a>
                     </div>
                 </div>
             </div>
@@ -70,11 +77,14 @@
                 <img src="img/imagem-2.jpg" alt="">
 
                 <div class="card-texto">
-                    <h2 class="titulo">Praia de noronha</h2>
-                    <p class="descricao">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, adipisci.
+                    <h2 class="titulo">Mergulhe na Magia Marinha</h2>
+                    <p class="descricao">Explore um universo subaquático extraordinário com recifes vibrantes,
+                        tartarugas majestosas e golfinhos dançantes. Noronha é um santuário vivo onde você se conecta
+                        com a natureza em seu estado mais puro, oferecendo mergulhos e snorkels que transformam sonhos
+                        em realidade.
                     </p>
                     <div class="buttons">
-                        <button class="btn">Saiba mais</button>
+                        <a href="#secao-atracoes" class="btn">Explorar Atrações</a>
 
                     </div>
                 </div>
@@ -84,11 +94,13 @@
                 <img src="img/imagem-3.jpg" alt="">
 
                 <div class="card-texto">
-                    <h2 class="titulo">Praia de noronha</h2>
-                    <p class="descricao">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, adipisci.
+                    <h2 class="titulo">Aventura e Contemplação</h2>
+                    <p class="descricao">Caminhe por trilhas selvagens que revelam vistas de tirar o fôlego do Atlântico
+                        infinito. Escarpas gigantescas, formações rochosas primitivas e pôr do sol avermelhado criam uma
+                        sinfonia de paisagens que tocam a alma e deixam memórias eternas gravadas no coração.
                     </p>
                     <div class="buttons">
-                        <button class="btn">Saiba mais</button>
+                        <a href="#secao-atracoes" class="btn">Explorar Atrações</a>
                     </div>
                 </div>
             </div>
@@ -102,7 +114,7 @@
 
         </section>
         <section>
-            <div class="secao-atracoes">
+            <div id="secao-atracoes" class="secao-atracoes">
                 <div class="titulo-atracoes">
                     <h2>Atrações do Arquipélago</h2>
                     <p>Das praias premiadas internacionalmente às mergulhos em águas cristalinas de até 40m de
@@ -117,8 +129,12 @@
                             <h3>Passeios em Noronha</h3>
                             <p>Principais atrações de passeios em Noronha. Separamos 13 opções imperdíveis com preços
                                 competitivos e um atendimento personalizado.</p>
-                            <a href="">Saiba Mais</a>
+
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="card">
@@ -127,8 +143,12 @@
                             <h3>Restaurantes</h3>
                             <p>Descubra os melhores restaurantes de Noronha, com pratos típicos e ingredientes frescos
                                 da região.</p>
-                            <a href="">Saiba Mais</a>
+
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="card">
@@ -138,7 +158,9 @@
                             <p>A Lua de Mel não é um simples passeio de férias, mas sim a primeira e a mais importante
                                 viagem romântica que um casal faz, marcando o início de uma nova etapa em suas vidas.
                             </p>
-                            <a href="">Saiba Mais</a>
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
 
@@ -150,7 +172,9 @@
                                 estadia inesquecível.
                                 Cama box, piscina, chá da tarde e muito mais...
                             </p>
-                            <a href="">Saiba Mais</a>
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
 
@@ -161,7 +185,9 @@
                             <p>Confira nossas promoções especiais para suas férias em Noronha!
                                 Tudo para facilitar a sua vida e aproveitar todas as vantagens de ser nosso cliente.
                             </p>
-                            <a href="">Saiba Mais</a>
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
 
@@ -169,30 +195,39 @@
                         <img src="img/buggy-e-moto.webp" alt="">
                         <div class="card-conteudo">
                             <h3>Buggy e Moto</h3>
-                            <p>Experimente a emoção de explorar Noronha de forma única com nossos serviços de buggy e moto.
-                                Queremos proporcionar a você e sua família momentos inesquecíveis na Ilha de Fernando de Noronha. Dispomos de buggys e motos que facilitam a sua locomoção com conforto e segurança.
+                            <p>Experimente a emoção de explorar Noronha de forma única com nossos serviços de buggy e
+                                moto.
+                                Queremos proporcionar a você e sua família momentos inesquecíveis na Ilha de Fernando de
+                                Noronha. Dispomos de buggys e motos que facilitam a sua locomoção com conforto e
+                                segurança.
                             </p>
-                            <a href="">Saiba Mais</a>
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <img src="img/imagem-1.jpg" alt="">
+                        <img src="img/imagem-dicas.webp" alt="">
                         <div class="card-conteudo">
-                            <h3>Passeios em Noronha</h3>
-                            <p>Principais atrações de passeios em Noronha. Separamos 13 opções imperdíveis com preços
-                                competitivos e um atendimento personalizado.</p>
-                            <a href="">Saiba Mais</a>
+                            <h3>Dicas Importantes</h3>
+                            <p>Fernando de Noronha conta com as Três praias mais bonitas do Brasil, mas vai muito além,
+                                todos lugares que você olha são incríveis, vamos as Dicas.</p>
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <img src="img/imagem-1.jpg" alt="">
+                        <img src="img/imagem-como-chegar.webp" alt="">
                         <div class="card-conteudo">
-                            <h3>Passeios em Noronha</h3>
-                            <p>Principais atrações de passeios em Noronha. Separamos 13 opções imperdíveis com preços
-                                competitivos e um atendimento personalizado.</p>
-                            <a href="">Saiba Mais</a>
+                            <h3>Como Chegar</h3>
+                            <p>Duas companhias aéreas têm vôos regulares saindo de Recife (1h20 de viagem) e Natal (55
+                                minutos). Para quem gosta do mar, há a opção dos cruzeiros marítimos.</p>
+                            <div class="card-bts">
+                                <a href="cadastro.html">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -212,15 +247,17 @@
         </section>
         <section>
             <div class="secao-contato">
-                <p>Aproveite a oportunidade!</p>
-                <h3>Entre em contato para esclarecimento de dúvidas e agendamentos de passeios</h3>
-                <div class="links-contato">
-                    <a class="apresentacao-links" href="#" target="_blank"><img src="img/instagram.svg"
-                            alt="instagram">Instagram</a>
-                    <a class="apresentacao-links" href="#" target="_blank"><img src="img/facebook.svg"
-                            alt="instagram">Facebook</a>
-                    <a class="apresentacao-links" href="#" target="_blank"><img src="img/youtube.svg"
-                            alt="instagram">YouTube</a>
+                <div class="conteudo-contato">
+                    <p>Aproveite a oportunidade!</p>
+                    <h3>Entre em contato para esclarecimento de dúvidas e agendamentos de passeios</h3>
+                    <div class="links-contato">
+                        <a class="apresentacao-links" href="#" target="_blank"><img src="img/instagram.svg"
+                                alt="instagram">Instagram</a>
+                        <a class="apresentacao-links" href="#" target="_blank"><img src="img/facebook.svg"
+                                alt="instagram">Facebook</a>
+                        <a class="apresentacao-links" href="#" target="_blank"><img src="img/youtube.svg"
+                                alt="instagram">YouTube</a>
+                    </div>
                 </div>
             </div>
 

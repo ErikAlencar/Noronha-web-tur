@@ -1,0 +1,328 @@
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --ocean: #0096C7;
+        --deep: #023E8A;
+        --lagoon: #48CAE4;
+        --green: #2D6A4F;
+        --leaf: #52B788;
+        --sand: #F5E6C8;
+        --white: #FFFFFF;
+        --text: #1A2E3B;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin-top: 10%;
+        background-image: url('/img/imagem-3.jpg');
+        background-position: center;    
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Inter', sans-serif;
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+     .btn-voltar {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        border: none;
+    }
+
+    .btn-voltar:hover {
+        background: white;
+        transform: translateX(-4px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-voltar:active {
+        transform: translateX(-2px);
+    }
+
+    .btn-voltar span {
+        font-size: 18px;
+    }
+
+
+    .link-externo {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background-color: #0096c7;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+
+    .link-externo:hover {
+        background-color: #0077b6;
+    }
+
+
+    /* ── MAPA SECTION ── */
+    .map-section {
+        padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+        max-width: 1100px;
+        margin-inline: auto;
+    }
+
+    .section-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ocean);
+        margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.6rem, 4vw, 2.6rem);
+        font-weight: 700;
+        color: var(--deep);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .section-desc {
+        font-size: clamp(0.85rem, 1.8vw, 1rem);
+        color: #4A6070;
+        line-height: 1.7;
+        max-width: 64ch;
+        margin-bottom: 2rem;
+    }
+
+    /* map card */
+    .map-card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(0, 60, 100, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+        position: relative;
+    }
+
+    .map-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.85rem 1.25rem;
+        background: var(--deep);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .map-toolbar span {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+    }
+
+    .toolbar-dots {
+        display: flex;
+        gap: 6px;
+    }
+
+    .toolbar-dots i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .toolbar-dots i:nth-child(1) {
+        background: #FF5F57;
+    }
+
+    .toolbar-dots i:nth-child(2) {
+        background: #FEBC2E;
+    }
+
+    .toolbar-dots i:nth-child(3) {
+        background: #28C840;
+    }
+
+    .map-controls {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .ctrl-btn {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        line-height: 1;
+    }
+
+    .ctrl-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .map-image-wrap {
+        overflow: hidden;
+        cursor: grab;
+        touch-action: pinch-zoom;
+        background: #ADE8F4;
+    }
+
+    .map-image-wrap:active {
+        cursor: grabbing;
+    }
+
+    .map-image-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transform-origin: center center;
+        transform: scale(var(--zoom, 1)) translate(var(--tx, 0px), var(--ty, 0px));
+        transition: transform 0.15s ease;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .map-caption {
+        padding: 1rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #EEF2F5;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .map-caption p {
+        font-size: 0.75rem;
+        color: #7A9AAF;
+    }
+
+    .hint-badge {
+        font-size: 0.68rem;
+        background: #EAF6FF;
+        color: var(--ocean);
+        border: 1px solid #BEE3F8;
+        border-radius: 50px;
+        padding: 0.3em 0.8em;
+        font-weight: 500;
+    }
+
+    /* ── INFO CARDS ── */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2rem;
+        margin-top: 2.5rem;
+    }
+
+    .info-card {
+        background: var(--white);
+        border-radius: 14px;
+        padding: 1.4rem 1.25rem;
+        box-shadow: 0 2px 12px rgba(0, 50, 80, 0.07);
+        border-top: 3px solid var(--ocean);
+        margin-bottom: 1.2rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:nth-child(2) {
+        border-top-color: var(--green);
+    }
+
+    .info-card:nth-child(3) {
+        border-top-color: #F4A261;
+    }
+
+    .info-card:nth-child(4) {
+        border-top-color: #9B5DE5;
+    }
+
+    .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 50, 80, 0.12);
+    }
+
+    .card-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.7rem;
+        display: block;
+    }
+
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--deep);
+        margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+        font-size: 0.82rem;
+        color: #607080;
+        line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+        background: var(--deep);
+        color: rgba(255, 255, 255, 0.55);
+        text-align: center;
+        padding: 2rem 1.5rem;
+        font-size: 0.78rem;
+        line-height: 1.7;
+    }
+
+    footer strong {
+        color: var(--lagoon);
+    }
+
+    /* ── RESPONSIVE TWEAKS ── */
+    @media (max-width: 600px) {
+        .stat-item {
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .map-controls {
+            display: none;
+        }
+    }

@@ -1,10 +1,136 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: "Poppins", sans-serif;
-}
-/* Cores em variáveis */
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('img/imagem-formulario.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .btn-voltar {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        border: none;
+    }
+
+    .btn-voltar:hover {
+        background: white;
+        transform: translateX(-4px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-voltar:active {
+        transform: translateX(-2px);
+    }
+
+    .btn-voltar span {
+        font-size: 18px;
+    }
+
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #007791;
+        text-align: center;
+    }
+
+    .intro {
+        text-align: center;
+        font-size: 1.1em;
+        color: #666;
+    }
+
+    .destaques {
+        margin: 25px 0;
+        padding: 15px;
+        background: #e7f6f8;
+        border-left: 5px solid #007791;
+        border-radius: 4px;
+    }
+
+    .btn-valores {
+        display: block;
+        width: 250px;
+        margin: 30px auto;
+        padding: 15px;
+        background-color: #007791;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        transition: background 0.3s;
+    }
+
+    .btn-valores:hover {
+        background-color: #005669;
+    }
+
+    .quadro-valores {
+        display: none;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007791;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }

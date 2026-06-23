@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa – Fernando de Noronha</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/mapa.css" />
+</head>
+
+<body>
+
+  <button class="btn-voltar" onclick="history.back()" title="Voltar">
+    <span>←</span> Voltar
+  </button>
+
+  <!-- MAP -->
+  <section class="map-section">
+    <div class="info-card">
+      <p class="section-label">Navegue pelo arquipélago</p>
+      <h2 class="section-title">Mapa da Ilha Principal</h2>
+      <p class="section-desc">
+        Explore as principais praias, trilhas, vilas e pontos de referência de Fernando de Noronha.
+        Use os controles para ampliar e arrastar o mapa.
+      </p>
+    </div>
+
+    <div class="map-card">
+      <div class="map-toolbar">
+        <div class="toolbar-dots">
+          <i></i><i></i><i></i>
+        </div>
+        <span>Mapa Ilustrado · Fernando de Noronha – PE</span>
+        <div class="map-controls">
+          <button class="ctrl-btn" id="zoomIn" title="Aproximar">＋</button>
+          <button class="ctrl-btn" id="zoomOut" title="Afastar">－</button>
+          <button class="ctrl-btn" id="zoomReset" title="Resetar">↺</button>
+        </div>
+      </div>
+
+      <div class="map-image-wrap" id="mapWrap">
+        <img src="/Noronha-web-tur-main/img/mapa-de-Fernando-de-Noronha.webp"
+          alt="Mapa ilustrado de Fernando de Noronha mostrando praias, vilas, trilhas, aeroporto e pontos turísticos"
+          id="mapImg" draggable="false" />
+      </div>
+
+      <div class="map-caption">
+        <p>Fonte: Mapa turístico ilustrado · Ilha de Fernando de Noronha</p>
+        <span class="hint-badge">📍 Arraste para explorar · Pinça para zoom</span>
+      </div>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="card-icon">🏖️</span>
+        <p class="card-title">Praias Icônicas</p>
+        <p class="card-text">Baía do Sancho, Praia do Leão, Cacimba do Padre e Praia da Atalaia estão entre as mais
+          belas do Brasil.</p>
+      </div>
+      <div class="info-card">
+        <span class="card-icon">🌿</span>
+        <p class="card-title">Floresta e Trilhas</p>
+        <p class="card-text">Floresta Nova e Floresta Velha abrigam trilhas como a Trilha do Atalaia e Trilha Capom-Açu.
+        </p>
+      </div>
+      <div class="info-card">
+        <span class="card-icon">🏘️</span>
+        <p class="card-title">Vila dos Remédios</p>
+        <p class="card-text">Centro da ilha, com restaurantes, pousadas, a Igreja N.S. dos Remédios e a vida noturna
+          local.</p>
+      </div>
+      <div class="info-card">
+        <span class="card-icon">🌊</span>
+        <p class="card-title">Mar de Dentro e Fora</p>
+        <p class="card-text">O lado calmo (Mar de Dentro) é ideal para mergulho; o Mar de Fora tem ondas para surf.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Fernando de Noronha</strong> · Pernambuco, Brasil</p>
+    <p>Patrimônio Natural da Humanidade – UNESCO desde 2001 · Área de Proteção Ambiental</p>
+  </footer>
+
+  <script>
+    const wrap = document.getElementById('mapWrap');
+    const img = document.getElementById('mapImg');
+    const btnIn = document.getElementById('zoomIn');
+    const btnOut = document.getElementById('zoomOut');
+    const btnReset = document.getElementById('zoomReset');
+
+    let zoom = 1, tx = 0, ty = 0;
+    let dragging = false, startX = 0, startY = 0, lastTx = 0, lastTy = 0;
+    const MIN_ZOOM = 1, MAX_ZOOM = 4;
+
+    function applyTransform() {
+      img.style.transform = `scale(${zoom}) translate(${tx}px, ${ty}px)`;
+    }
+
+    function clampTranslate() {
+      const maxX = (wrap.offsetWidth * (zoom - 1)) / (2 * zoom);
+      const maxY = (wrap.offsetHeight * (zoom - 1)) / (2 * zoom);
+      tx = Math.max(-maxX, Math.min(maxX, tx));
+      ty = Math.max(-maxY, Math.min(maxY, ty));
+    }
+
+    function setZoom(z) {
+      zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, z));
+      if (zoom === MIN_ZOOM) { tx = 0; ty = 0; }
+      clampTranslate();
+      applyTransform();
+    }
+
+    btnIn.addEventListener('click', () => setZoom(zoom + 0.5));
+    btnOut.addEventListener('click', () => setZoom(zoom - 0.5));
+    btnReset.addEventListener('click', () => { zoom = 1; tx = 0; ty = 0; applyTransform(); });
+
+    /* Mouse drag */
+    wrap.addEventListener('mousedown', e => {
+      dragging = true; startX = e.clientX; startY = e.clientY;
+      lastTx = tx; lastTy = ty; wrap.style.cursor = 'grabbing';
+    });
+    window.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      tx = lastTx + (e.clientX - startX) / zoom;
+      ty = lastTy + (e.clientY - startY) / zoom;
+      clampTranslate(); applyTransform();
+    });
+    window.addEventListener('mouseup', () => { dragging = false; wrap.style.cursor = 'grab'; });
+
+    /* Wheel zoom */
+    wrap.addEventListener('wheel', e => {
+      e.preventDefault();
+      setZoom(zoom + (e.deltaY < 0 ? 0.25 : -0.25));
+    }, { passive: false });
+
+    /* Touch pinch */
+    let lastDist = null;
+    wrap.addEventListener('touchstart', e => {
+      if (e.touches.length === 2) {
+        lastDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      } else if (e.touches.length === 1) {
+        dragging = true;
+        startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+        lastTx = tx; lastTy = ty;
+      }
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', e => {
+      if (e.touches.length === 2 && lastDist) {
+        const d = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        setZoom(zoom * (d / lastDist));
+        lastDist = d;
+      } else if (e.touches.length === 1 && dragging) {
+        tx = lastTx + (e.touches[0].clientX - startX) / zoom;
+        ty = lastTy + (e.touches[0].clientY - startY) / zoom;
+        clampTranslate(); applyTransform();
+      }
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', () => { dragging = false; lastDist = null; });
+  </script>
+</body>
+
+</html>

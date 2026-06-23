@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Noronha Web Tur</title>
+    <link rel="stylesheet" href="CSS/cadastro.css">
+</head>
+
+<body>
+    <!-- Carrosel de Fundo -->
+    <section class="carrosel">
+        <div class="list-item active">
+            <img src="img/imagem-2.jpg" alt="">
+        </div>
+
+        <div class="list-item">
+            <img src="img/imagem-formulario.jpg" alt="">
+        </div>
+
+        <div class="list-item">
+            <img src="img/pousada.jpg" alt="">
+        </div>
+
+        <div class="list-item">
+            <img src="img/imagem-1.webp" alt="">
+        </div>
+    </section>
+
+    <button class="btn-voltar" onclick="history.back()" title="Voltar">
+        <span>←</span> Voltar
+    </button>
+
+    <main>
+        <div class="container">
+            <h1>Cadastro</h1>
+            <p class="subtitle">Crie sua conta para começar</p>
+
+            <form id="cadastroForm">
+                <!-- Nome Completo -->
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                    <div class="error" id="erroNome"></div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    <div class="error" id="erroEmail"></div>
+                </div>
+
+                <!-- Telefone -->
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 99999-9999">
+                    <div class="error" id="erroTelefone"></div>
+                </div>
+
+                <!-- Senha -->
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <div class="password-container">
+                        <input type="password" id="senha" name="senha" placeholder="Digite uma senha segura" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword('senha')">👁️</button>
+                    </div>
+                    <div class="error" id="erroSenha"></div>
+                </div>
+
+                <!-- Confirmar Senha -->
+                <div class="form-group">
+                    <label for="confirmaSenha">Confirmar Senha</label>
+                    <div class="password-container">
+                        <input type="password" id="confirmaSenha" name="confirmaSenha" placeholder="Confirme sua senha"
+                            required>
+                        <button type="button" class="toggle-password"
+                            onclick="togglePassword('confirmaSenha')">👁️</button>
+                    </div>
+                    <div class="error" id="erroConfirmaSenha"></div>
+                </div>
+
+                <!-- Botões -->
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Cadastrar</button>
+                    <button type="reset" class="btn-cancel">Limpar</button>
+                </div>
+            </form>
+
+            <div class="login-link">
+                Já tem uma conta? <a href="index.html">Faça login aqui</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Toggle de visibilidade de senha
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            if (field.type === 'password') {
+                field.type = 'text';
+            } else {
+                field.type = 'password';
+            }
+        }
+
+        // Validação do formulário
+        document.getElementById('cadastroForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Limpar erros anteriores
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('show'));
+
+            // Obter valores
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const senha = document.getElementById('senha').value;
+            const confirmaSenha = document.getElementById('confirmaSenha').value;
+
+            let temErro = false;
+
+            // Validar nome
+            if (nome.length < 3) {
+                mostrarErro('erroNome', 'Nome deve ter pelo menos 3 caracteres');
+                temErro = true;
+            }
+
+            // Validar email
+            if (!validarEmail(email)) {
+                mostrarErro('erroEmail', 'Email inválido');
+                temErro = true;
+            }
+
+            // Validar senha
+            if (senha.length < 6) {
+                mostrarErro('erroSenha', 'Senha deve ter pelo menos 6 caracteres');
+                temErro = true;
+            }
+
+            // Validar confirmação de senha
+            if (senha !== confirmaSenha) {
+                mostrarErro('erroConfirmaSenha', 'As senhas não coincidem');
+                temErro = true;
+            }
+
+            // Se não houver erros, enviar dados
+            if (!temErro) {
+                alert('Cadastro realizado com sucesso!');
+                // Aqui você pode enviar os dados para o servidor
+                this.reset();
+            }
+        });
+
+        // Função para validar email
+        function validarEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        // Função para mostrar erro
+        function mostrarErro(elementId, mensagem) {
+            const elemento = document.getElementById(elementId);
+            elemento.textContent = mensagem;
+            elemento.classList.add('show');
+        }
+
+        // Validação em tempo real
+        document.getElementById('email').addEventListener('blur', function () {
+            const erroElement = document.getElementById('erroEmail');
+            if (!validarEmail(this.value.trim()) && this.value.trim() !== '') {
+                mostrarErro('erroEmail', 'Email inválido');
+            } else {
+                erroElement.classList.remove('show');
+            }
+        });
+
+        document.getElementById('senha').addEventListener('change', function () {
+            const confirmaSenha = document.getElementById('confirmaSenha');
+            if (confirmaSenha.value && this.value !== confirmaSenha.value) {
+                mostrarErro('erroConfirmaSenha', 'As senhas não coincidem');
+            } else if (confirmaSenha.value === this.value) {
+                document.getElementById('erroConfirmaSenha').classList.remove('show');
+            }
+        });
+
+        document.getElementById('confirmaSenha').addEventListener('change', function () {
+            const senha = document.getElementById('senha');
+            if (this.value && senha.value !== this.value) {
+                mostrarErro('erroConfirmaSenha', 'As senhas não coincidem');
+            } else if (this.value === senha.value) {
+                document.getElementById('erroConfirmaSenha').classList.remove('show');
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script>
+        // Script de carrosel inline para garantir funcionamento
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Carrosel iniciando...');
+
+            const slides = document.querySelectorAll('.carrosel .list-item');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const indicatorsWrap = document.querySelector('.carousel-indicators');
+
+            console.log('Slides encontrados:', slides.length);
+            console.log('Botões:', prevBtn, nextBtn);
+            console.log('Indicadores:', indicatorsWrap);
+
+            if (slides.length === 0) {
+                console.error('Nenhum slide encontrado!');
+                return;
+            }
+
+            let current = 0;
+            let autoplayInterval = null;
+
+            // Atualizar indicadores
+            function updateIndicators() {
+                const indicators = document.querySelectorAll('.carousel-indicators button');
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === current);
+                });
+            }
+
+            // Atualizar slides
+            function updateSlides() {
+                console.log('Atualizando para slide:', current);
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === current);
+                });
+                updateIndicators();
+            }
+
+            // Criar indicadores
+            function createIndicators() {
+                indicatorsWrap.innerHTML = '';
+                slides.forEach((_, i) => {
+                    const btn = document.createElement('button');
+                    btn.addEventListener('click', () => {
+                        current = i;
+                        updateSlides();
+                        resetAutoplay();
+                    });
+                    indicatorsWrap.appendChild(btn);
+                });
+                updateIndicators();
+            }
+
+            // Próximo slide
+            function nextSlide() {
+                current = (current + 1) % slides.length;
+                updateSlides();
+                console.log('Próximo slide:', current);
+            }
+
+            // Slide anterior
+            function prevSlide() {
+                current = (current - 1 + slides.length) % slides.length;
+                updateSlides();
+            }
+
+            // Autoplay
+            function startAutoplay() {
+                autoplayInterval = setInterval(nextSlide, 3500);
+                console.log('Autoplay iniciado');
+            }
+
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    clearInterval(autoplayInterval);
+                    console.log('Autoplay pausado');
+                }
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            // Event listeners dos botões
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoplay();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoplay();
+                });
+            }
+
+            // Pausar ao passar o mouse
+            const carousel = document.querySelector('.carrosel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+            }
+
+            // Iniciar carrosel
+            createIndicators();
+            updateSlides();
+            startAutoplay();
+        });
+    </script>
+</body>
+
+</html>

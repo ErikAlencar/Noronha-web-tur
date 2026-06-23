@@ -1,77 +1,86 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacotes</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <title>Pacotes Fernando de Noronha</title>
+    <link rel="stylesheet" href="CSS/pacotes.css">
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="img/imagem-logo.png" alt="Logo Noronha  Web tur" width="150">
-                    <p class="slogan">Noronha <span>WEB TUR</span></p>
-                </a>
-            </div>
 
-            <nav>
-                <ul>
-                    <div class="lista-menu">
-                        <button id="btnNoronha" class="btn-menu">
-                            Noronha ▼
-                        </button>
+    <button class="btn-voltar" onclick="history.back()" title="Voltar">
+        <span>←</span> Voltar
+    </button>
 
-                        <div id="menuNoronha" class="lista">
-                            <a href="#">PRAIAS</a>
-                            <a href="#">MAPA DA ILHA</a>
-                            <a href="#">HOTÉIS</a>
-                            <a href="#">DICA</a>
-                        </div>
-                    </div>
+    <div class="container">
+        <h1>Pacotes de Viagem - Fernando de Noronha</h1>
+        <p class="intro">Conheça o paraíso das águas cristalinas e biodiversidade única.</p>
 
-                    <li><a href="index.html">Pacotes</a></li>
-                    <li><a href="destinos.html">Restaurantes</a></li>
-                    <li><a href="passeios.html">Passeios</a></li>
-                    <li><a href="reservas.html">Reservas</a></li>
-                    <li><a href="contato.html">Pousadas</a></li>
-                    <li><a href="contato.html">Como chegar</a></li>
-                </ul>
-            </nav>
+        <div class="destaques">
+            <h3>O que está incluso nos pacotes padrão:</h3>
+            <ul>
+                <li>Passagem aérea de ida e volta</li>
+                <li>Translado aeroporto / hospedagem / aeroporto</li>
+                <li>Café da manhã incluso</li>
+                <li>Passeio de barco guiado pelas principais praias</li>
+            </ul>
         </div>
-    </header>
-    <main>
-     <section>
-            <div class="container">
-                <h2>Pacotes</h2>
-                <p>Explore nossos pacotes exclusivos para Noronha, com opções personalizadas para atender às suas preferências e garantir uma experiência inesquecível na ilha.</p>
-            </div>
-     </section>
-     <section>
-        <div class="secao-precos">
-            <div class="card-precos">
-              <div class="topo-precos">
-                <h3>8 DIA E 7 NOITES</h3>
-                <p class="texto-informativo">Dezembro a Fevereiro 2026</p>
-                <p><span>r$1.750</span> por pessoa</p>
-                <p class="texto-informativo">à vista 10% desconto ou parcelado em 10x sem entrada e sem juros</p>
-              </div>
-              <div class="rodape-precos">
-                <ul>
-                  <li>Hospedagem com café da manhã</li>
-                  <li>Translado in/out</li>
-                  <li>Passagem ida e volta</li>
-                  <li>Saída por Natal</li>
-                </ul>
-                <button class="btn-reservar">Reservar</button>
-              </div>
-            </div>
+
+        <!-- Botão de Ação -->
+        <button class="btn-valores" id="btnMostrar">Ver Opções de Hospedagem e Valores</button>
+
+        <!-- Quadro oculto que aparece ao clicar -->
+        <div class="quadro-valores" id="quadroValores">
+            <h2>Tabela de Valores e Categorias</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Hospedagem</th>
+                        <th>Descrição</th>
+                        <th>Valor por Pessoa (5 Dias)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pousada Econômica</strong></td>
+                        <td>Acomodações simples, ambiente familiar e excelente custo-benefício.</td>
+                        <td>R$ 3.200,00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pousada Conforto</strong></td>
+                        <td>Quartos climatizados, piscina e boa localização próxima à Vila dos Remédios.</td>
+                        <td>R$ 5.500,00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pousada de Luxo / Boutique</strong></td>
+                        <td>Vista para o mar, serviços personalizados, SPA e alta gastronomia.</td>
+                        <td>R$ 9.800,00</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-     </section>
-    </main>
+    </div>
+
+    <script>
+        // Seleciona os elementos do HTML
+        const btn = document.getElementById('btnMostrar');
+        const quadro = document.getElementById('quadroValores');
+
+        // Adiciona o evento de clique ao botão
+        btn.addEventListener('click', function () {
+            // Verifica se o quadro está escondido
+            if (quadro.style.display === 'none' || quadro.style.display === '') {
+                quadro.style.display = 'block'; // Mostra o quadro
+                btn.textContent = 'Ocultar Opções de Hospedagem'; // Muda o texto do botão
+            } else {
+                quadro.style.display = 'none'; // Esconde o quadro
+                btn.textContent = 'Ver Opções de Hospedagem e Valores'; // Restaura o texto original
+            }
+        });
+    </script>
+
 </body>
 
 </html>
