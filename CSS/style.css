@@ -14,7 +14,6 @@
     /* Azul Royal do texto 'NORONHA' */
     --cor-detalhes: #FDC744;
     /* Amarelo/Dourado do Sol */
-    --cor-secundaria: #832E96;
     /* Roxo das Montanhas */
     --cor-destaque: #3BB1A5;
     /* Turquesa das Ondas */
@@ -24,12 +23,10 @@
     /* Neutros e Tipografia */
     --cor-fundo-site: #FFFFFF;
     /* Branco Puro para a maior parte do site */
-    --cor-fundo-suave: #F8F9FA;
     /* Cinza claríssimo para seções secundárias */
     --cor-texto-principal: #37549C;
     /* Usando o Azul Royal do logo para texto */
-    --cor-texto-suave: #6C757D;
-    /* Cinza para descrições longas */
+    
 
     /* Tons Derivados para UI (ex: botões) */
     --cor-detalhes-escuro: #E6A800;
@@ -203,7 +200,7 @@ nav {
 .menu-btn:hover,
 .nav-menu li a:focus,
 .menu-btn:focus {
-    color: var(--cor-detalhes-escuro);
+    color: var(--cor-fundo-site);
 }
 
 .submenu {
@@ -685,26 +682,36 @@ header nav ul a:hover::after {
 /*SECAO CONTATO*/
 
 .conteudo-contato {
-    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 10px;
+    padding: 20px;
+}
+.secao-contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .links-contato {
-    border-bottom: 1px solid beige;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .conteudo-contato h3 {
-    font-size: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
     margin-bottom: 60px;
 }
 
 .conteudo-contato p {
     padding: 10px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: var(--cor-detalhes);
     color: var(--cor-fundo-site);
     border-radius: 9px;
@@ -714,34 +721,35 @@ header nav ul a:hover::after {
 
 .apresentacao-links {
     font-weight: bold;
-    color: var(--cor-detalhes);
-    background-color: var(--headline-gradiente-moderno);
-    font-size: 1.2rem;
+    color: var(--cor-fundo-site);
+    background-color: var(--cor-texto-principal);
+    font-size: 13px;
     display: inline-flex;
+    align-items: center;
     justify-content: center;
-    margin-right: 1rem;
-    border: 1px solid;
     border-radius: 8px;
-    padding: 10px 1rem;
+    padding: 5px 0.5rem;
     box-shadow: 0px 0px 30px 5px var(--cor-texto-principal);
     transition: background-color 0.2s ease, transform 0.6s ease;
 }
 
 .apresentacao-links:hover {
-    background-color: var(--cor-detalhes-escuro);
+    background-color: var(--cor-fundo-site);
+    color: black;
     transform: translateY(-3px);
 }
 
 .apresentacao-links img {
-    width: 2rem;
-    margin-right: 2rem;
+    width: 0.9rem;
+    padding-right: 4px;
+    filter: invert(82%) sepia(35%) saturate(1468%) hue-rotate(345deg) brightness(101%) contrast(99%);
 }
 
 /*SECAO RODAPE*/
 
 .conteudo-rodape {
     background-color: var(--headline-transparente-azul);
-    min-height: 20vh;
+    min-height: 16vh;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -750,7 +758,7 @@ header nav ul a:hover::after {
 
 
 .conteudo-rodape h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: arial;
     font-weight: 300;
     color: var(--cor-detalhes-escuro);
@@ -763,7 +771,7 @@ header nav ul a:hover::after {
 
 .secao-rodape a {
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 0.875rem;
     color: white;
 }
 

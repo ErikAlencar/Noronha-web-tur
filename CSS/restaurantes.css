@@ -1,0 +1,215 @@
+ /* Reset e Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f4f7;
+            color: #fff;
+            line-height: 1.6;
+        }
+         .btn-voltar {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        border: none;
+    }
+
+    .btn-voltar:hover {
+        background: white;
+        transform: translateX(-4px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-voltar:active {
+        transform: translateX(-2px);
+    }
+
+    .btn-voltar span {
+        font-size: 18px;
+    }
+
+        /* Cabeçalho */
+        header {
+            background-image: url('/img/restaurante.jpg');
+             background-position: 0px -300px;
+             filter: brightness(50%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            padding: clamp(60px, 8vw, 120px) 20px;
+            /* Altura do topo diminui em telas menores */
+        }
+
+        header h1 {
+            font-size: clamp(24px, 5vw, 42px);
+            /* Letra encolhe na tela menor */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        header p {
+            font-size: clamp(14px, 2vw, 18px);
+            opacity: 0.9;
+        }
+
+        /* Container Principal */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Grid Inteligente: Se ajusta sozinho de 1 a 3 colunas sem quebrar */
+        .grid-restaurantes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card do Restaurante */
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-conteudo {
+            padding: clamp(15px, 3vw, 25px);
+            /* O espaçamento interno encolhe no celular */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card h2 {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: #006666;
+            margin-bottom: 10px;
+        }
+
+        .tag-categoria {
+            display: inline-block;
+            background-color: #e0f2f1;
+            color: #00796b;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Detalhes de Informação */
+        .info-detalhes {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .info-item {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item strong {
+            color: #333;
+            margin-right: 5px;
+        }
+
+        /* Botão Adaptável que encolhe e muda de tamanho conforme a tela [Método 3] */
+        .btn-site {
+            display: block;
+            text-align: center;
+            background-color: #fdc744;
+            /* Cor amarela/laranja pedida */
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px 24px;
+            /* Tamanho confortável para clique no PC */
+            font-size: 16px;
+            border-radius: 6px;
+            margin-top: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-site:hover {
+            background-color: #e5b336;
+        }
+
+        /* RESPONSIVIDADE ADICIONAL COM MEDIA QUERIES [Método 3] */
+
+        /* Ajustes específicos para Tablets e Celulares (telas menores que 768px) */
+        @media (max-width: 768px) {
+            main {
+                margin: 20px auto;
+                /* Reduz a margem externa */
+            }
+
+            .grid-restaurantes {
+                gap: 15px;
+                /* Deixa os cards ligeiramente mais próximos */
+            }
+
+            .btn-site {
+                padding: 10px 16px;
+                /* Botão encolhe para caber melhor na tela menor */
+                font-size: 14px;
+                /* Letra do botão diminui */
+            }
+        }
+
+        /* Ajustes específicos para celulares muito pequenos (telas menores que 400px) */
+        @media (max-width: 400px) {
+            .card-conteudo {
+                padding: 15px;
+                /* Espaço bem otimizado para celulares finos */
+            }
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #004d40;
+            color: #fff;
+            margin-top: 60px;
+            font-size: 13px;
+        }
