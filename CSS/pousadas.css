@@ -1,0 +1,200 @@
+    /* Configurações Globais de Design e Resolução */
+    :root {
+        --primary: #007bff;
+        --secondary: #28a745;
+        --dark: #333;
+        --light: #f8f9fa;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e9ecef;
+        color: var(--dark);
+        line-height: 1.6;
+    }
+
+    .btn-voltar {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        border: none;
+    }
+
+    .btn-voltar:hover {
+        background: white;
+        transform: translateX(-4px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-voltar:active {
+        transform: translateX(-2px);
+    }
+
+    .btn-voltar span {
+        font-size: 18px;
+    }
+
+    /* Cabeçalho */
+    header {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('/img/pousada.jpg');
+        background-position: 0px -300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 70px;
+        padding: clamp(60px, 8vw, 120px) 20px;
+        /* Altura do topo diminui em telas menores */
+    }
+
+    header h1 {
+        font-size: clamp(24px, 5vw, 42px);
+        /* Letra encolhe na tela menor */
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    header p {
+        font-size: clamp(14px, 2vw, 18px);
+        opacity: 0.9;
+    }
+
+
+    /* Container Inteligente: Muda o número de colunas conforme o tamanho da tela */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 10px;
+    }
+
+    /* Estrutura Flexbox para que todos os cards fiquem do mesmo tamanho */
+    .card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+        background-color: var(--primary);
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card-header h2 {
+        font-size: 1.35rem;
+        font-weight: 600;
+    }
+
+    /* Corpo do Card com Flexbox para empurrar o preço para o rodapé do card */
+    .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .badge-container {
+        margin-bottom: 15px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-eco {
+        background-color: var(--secondary);
+    }
+
+    .badge-luxo {
+        background-color: #dc3545;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        color: #555;
+        flex-grow: 1;
+        /* Faz o texto ocupar o espaço necessário */
+        margin-bottom: 20px;
+    }
+
+    .price {
+        font-size: 1.6rem;
+        color: var(--secondary);
+        font-weight: bold;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+        margin-top: auto;
+        /* Alinha o preço sempre na base do card */
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px 10px;
+        font-size: 0.9rem;
+        color: #777;
+        border-top: 1px solid #ccc;
+    }
+
+    /* Regras específicas para telas menores (Responsividade Fina) */
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        header p {
+            font-size: 0.95rem;
+        }
+
+        .container {
+            grid-template-columns: 1fr;
+            /* Força uma única coluna em telas bem pequenas */
+            gap: 15px;
+        }
+
+        .card {
+            border-radius: 8px;
+        }
+    }

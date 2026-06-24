@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let current = slides.findIndex(s => s.classList.contains('active')) || 0;
     let interval = null;
-    const delay = 3500;
+    // Delay maior em telas menores para mudar mais de vagar
+    const delay = window.innerWidth <= 768 ? 5500 : 3500;
 
     function renderIndicators() {
         indicatorsWrap.innerHTML = '';

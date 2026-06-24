@@ -9,28 +9,12 @@
 }
 
 :root {
-    /* Cores Principais do Logo */
     --cor-fundo-logo: #5081ff;
-    /* Azul Royal do texto 'NORONHA' */
     --cor-detalhes: #FDC744;
-    /* Amarelo/Dourado do Sol */
-    /* Roxo das Montanhas */
-    --cor-destaque: #3BB1A5;
-    /* Turquesa das Ondas */
-    --cor-folhas: #1B8C5B;
-    /* Verde das Folhas e Estrelas */
-
-    /* Neutros e Tipografia */
     --cor-fundo-site: #FFFFFF;
-    /* Branco Puro para a maior parte do site */
-    /* Cinza claríssimo para seções secundárias */
     --cor-texto-principal: #37549C;
-    /* Usando o Azul Royal do logo para texto */
     
-
-    /* Tons Derivados para UI (ex: botões) */
     --cor-detalhes-escuro: #E6A800;
-    /* Variação mais escura do Sol para hovers */
     --headline-gradiente-moderno: linear-gradient(135deg, rgba(59, 177, 165, 0.9), rgba(131, 46, 150, 0.8));
     --headline-transparente-azul: rgba(55, 84, 156, 0.979);
     --headline-transparente-claro: rgb(255, 255, 255);
@@ -47,7 +31,6 @@ header {
     top: 0;
     left: 0;
     z-index: 3000;
-    /* maior z-index para permanecer acima do conteúdo */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     padding: 0.8rem 2rem;
     transition: padding 0.32s ease, backdrop-filter 0.32s ease, background-color 0.32s ease;
@@ -68,6 +51,9 @@ header.shrink {
     justify-content: space-between;
     gap: 1rem;
 }
+.logo img {
+    width: 150px;
+}   
 
 .logo span {
     font-weight: 300;
@@ -84,7 +70,7 @@ header.shrink {
 
 .slogan {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1;
 }
 
@@ -337,7 +323,7 @@ header nav ul a:hover::after {
     left: 0;
 }
 
-/* PAGINA */
+/* ///////////////////-/-</>------PAGINA------</> -/-////////////*/
 
 
 .container {
@@ -355,7 +341,13 @@ header nav ul a:hover::after {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    filter: brightness(50%);
+}
+.container .carrosel .list-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.521); /* ajuste a intensidade */
+    z-index: 1;
 }
 
 .container .carrosel .list-item .card-texto {
@@ -364,12 +356,12 @@ header nav ul a:hover::after {
     left: 15%;
     text-align: left;
     max-width: 600px;
-    animation: fadeInLeft 0.8s ease-out;
+    animation: fadeInLeft 0.1s ease-out;
     z-index: 10;
 }
 
 .container .carrosel .list-item .card-texto .titulo {
-    font-size: 5em;
+    font-size: 4rem;
     font-weight: 700;
     color: #FFFFFF;
     line-height: 1.1em;
@@ -389,12 +381,6 @@ header nav ul a:hover::after {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
 }
 
-.container .carrosel .list-item .card-texto a {
-
-    grid-template-columns: repeat(2, 130px);
-    grid-template-rows: 50px;
-    gap: 0.5rem;
-}
 
 .container .carrosel .list-item .card-texto .buttons a {
     border: none;
@@ -704,7 +690,10 @@ header nav ul a:hover::after {
 }
 
 .conteudo-contato h3 {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    color: var(--cor-texto-principal);
+    text-shadow: 2px 2px 10px rgba(92, 91, 85, 0.9);
     text-align: center;
     margin-bottom: 60px;
 }
@@ -795,7 +784,7 @@ header nav ul a:hover::after {
     }
 
     .slogan {
-        font-size: 0.95rem;
+        font-size: 1.25rem;
     }
 
     .nav-menu {
@@ -876,13 +865,13 @@ header nav ul a:hover::after {
     }
 
     .slogan {
-        font-size: 0.85rem;
+        font-size: 1.25rem;
     }
 
     .nav-menu li a,
     .menu-btn {
         padding: 12px 10px;
-        font-size: 0.95rem;
+        font-size: 1.25rem;
     }
 
     .container {
@@ -958,7 +947,10 @@ header nav ul a:hover::after {
     .card .card-conteudo p {
         font-size: 14px;
     }
-
+    secao-promocoes {
+        min-height: 80vh;
+        background-position: top center;
+    }
     .conteudo-promocoes {
         min-width: 90%;
         padding: 12px;
@@ -985,31 +977,30 @@ header nav ul a:hover::after {
     }
 
     .conteudo-contato {
-        padding: 0 15px;
+        padding: 30px 15px;
     }
 
     .conteudo-contato h3 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         margin-bottom: 30px;
     }
 
     .conteudo-contato p {
-        font-size: 1.2rem;
-        padding: 8px;
+        font-size: 1rem;
+        padding: 10px;
         margin-bottom: 25px;
     }
 
     .apresentacao-links {
-        font-size: 1rem;
+        font-size: 0.5rem;
         margin: 10px auto;
-        padding: 8px 12px;
-        flex-direction: column;
+        padding: 10px 12px;
         align-items: center;
     }
 
     .apresentacao-links img {
         width: 1.5rem;
-        margin: 0 0 6px 0;
+        margin: 0 0 20px 0;
     }
 
     .conteudo-rodape {

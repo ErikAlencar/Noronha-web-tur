@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passeios e Roteiro - Fernando de Noronha</title>
+    <style>
+        :root {
+            --primary: #007bb2;
+            --secondary: #26a69a;
+            --bg-card: #f4f9fc;
+            --text-main: #333;
+            --text-muted: #666;
+            --radius: 12px;
+        }
+
+        /* Reset básico e fluidez global */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('/img/imagem-1.webp');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #eef5f8;
+            color: var(--text-main);
+            padding: 1rem;
+        }
+
+        .btn-voltar {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        border: none;
+    }
+
+    .btn-voltar:hover {
+        background: white;
+        transform: translateX(-4px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-voltar:active {
+        transform: translateX(-2px);
+    }
+
+    .btn-voltar span {
+        font-size: 18px;
+    }
+
+        /* Container principal fluído e responsivo */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        /* Topo da página */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: calc(1.6rem + 1vw); /* Título escalável conforme a tela */
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: calc(0.9rem + 0.2vw);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Grid de cartões de passeios que se adapta dinamicamente */
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Estrutura flexível interna de cada card */
+        .tour-card {
+            background-color: var(--bg-card);
+            border-top: 5px solid var(--primary); /* Borda superior funciona melhor em layouts de grade */
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .tour-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .tour-description {
+            font-size: 0.95rem;
+            flex-grow: 1; /* Garante que o texto ocupe o espaço antes do rodapé do card */
+            margin-bottom: 1.25rem;
+        }
+
+        /* Rodapé interno do card com layout empilhável para telas minúsculas */
+        .tour-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #555;
+            border-top: 1px solid #ddd;
+            padding-top: 0.75rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        /* Rodapé da página */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #888;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Ajustes finos para telas de tablets e computadores maiores */
+        @media (min-width: 600px) {
+            body {
+                padding: 2rem;
+            }
+            .container {
+                padding: 2.5rem;
+            }
+            .tour-details {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <button class="btn-voltar" onclick="history.back()" title="Voltar">
+        <span>←</span> Voltar
+    </button>
+
+    <header>
+        <h1>Guia de Passeios em Fernando de Noronha</h1>
+        <p class="subtitle">Descubra as melhores atividades, belezas naturais e experiências no paraíso de Pernambuco!</p>
+    </header>
+
+    <main class="tours-grid">
+        <!-- Passeio 1 -->
+        <article class="tour-card">
+            <div>
+                <h2 class="tour-title">1. Ilha Tour 🚙</h2>
+                <p class="tour-description">O passeio mais famoso e completo de Noronha. Feito em caminhonete 4x4, percorre cerca de 80% da ilha passando pelas praias principais, mirantes e pontos históricos com paradas para banho e mergulho livre, terminando com o pôr do sol no Forte do Boldró.</p>
+            </div>
+            <div class="tour-details">
+                <span><strong>Duração:</strong> Aprox. 8 horas</span>
+                <span class="price">A partir de R$ 350,00</span>
+            </div>
+        </article>
+
+        <!-- Passeio 2 -->
+        <article class="tour-card">
+            <div>
+                <h2 class="tour-title">2. Barco com Planasub ⛵</h2>
+                <p class="tour-description">Navegação pelo Mar de Dentro passando pelas ilhas secundárias e praias até a Baía do Sancho, com parada para banho. Inclui a famosa atividade de plana-sub (prancha puxada pelo barco) para observar a vida marinha.</p>
+            </div>
+            <div class="tour-details">
+                <span><strong>Duração:</strong> Meio período</span>
+                <span class="price">A partir de R$ 250,00</span>
+            </div>
+        </article>
+
+        <!-- Passeio 3 -->
+        <article class="tour-card">
+            <div>
+                <h2 class="tour-title">3. Canoa Havaiana 🛶</h2>
+                <p class="tour-description">Remada contemplativa pelas águas cristalinas do arquipélago ao nascer ou pôr do sol, com excelentes chances de acompanhar golfinhos rotadores nadando próximo à canoa e visual deslumbrante do Morro do Pico.</p>
+            </div>
+            <div class="tour-details">
+                <span><strong>Duração:</strong> Aprox. 2 horas</span>
+                <span class="price">A partir de R$ 220,00</span>
+            </div>
+        </article>
+
+        <!-- Passeio 4 -->
+        <article class="tour-card">
+            <div>
+                <h2 class="tour-title">4. Mergulho de Batismo 🤿</h2>
+                <p class="tour-description">Noronha é um dos melhores destinos de mergulho do planeta. O batismo é a modalidade para iniciantes (sem curso prévio), permitindo descer até 12 metros de profundidade num autêntico aquário natural.</p>
+            </div>
+            <div class="tour-details">
+                <span><strong>Duração:</strong> Aprox. 2 a 3 horas</span>
+                <span class="price">A partir de R$ 1.100,00</span>
+            </div>
+        </article>
+
+        <!-- Passeio 5 -->
+        <article class="tour-card">
+            <div>
+                <h2 class="tour-title">5. Trilha Costa Esmeralda 🥾</h2>
+                <p class="tour-description">Caminhada leve que passa por cartões-postais como Praia do Cachorro, Praia do Meio, Praia da Conceição, Baía dos Porcos e Cacimba do Padre. Uma imersão paisagística pelas falésias e costões rochosos.</p>
+            </div>
+            <div class="tour-details">
+                <span><strong>Duração:</strong> Aprox. 4 horas</span>
+                <span class="price">A partir de R$ 220,00</span>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>Valores informados são estimativas de baixa/média temporada em 2026 e podem variar de acordo com a agência local escolhida. Agende com antecedência nas agências credenciadas.</p>
+    </footer>
+</div>
+
+</body>
+</html>
